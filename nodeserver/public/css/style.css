@@ -5,7 +5,7 @@
 }
 
 body{
-    background:url(/nodeserver/bck.jpg) no-repeat center;
+    background:url(/bck.jpg) no-repeat center;
     width:55vh;
     height: 95vh;
     display: block;
@@ -63,7 +63,7 @@ body{
 } 
 
 input{
-    width: 47vh;
+    width: 45vh;
     margin:3px 3px;
     padding:3px 3px;
     border:2px solid black;
@@ -71,7 +71,7 @@ input{
 }
 
 .btn{
-    background: url(/nodeserver/gf.jpg) no-repeat;
+    background: url(/gf.jpg) no-repeat;
     background-size: 32px 19px;   
 }
 .btn:hover{
