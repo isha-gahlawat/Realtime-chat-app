@@ -13,25 +13,44 @@ const users = {};
 
 // Serve static files from "public" folder
 app.use(express.static(path.join(__dirname, "public")));
-
 io.on("connection", socket => {
-  socket.on("new-user-joined", name => {
-    console.log("New user", name);
-    users[socket.id] = name;
-    socket.broadcast.emit("user-joined", name);
-  });
+socket.on('new-user-joined', ({ name, avatar }) => {
+  console.log("New user", name);
+  users[socket.id] = { name, avatar };
+  socket.broadcast.emit("user-joined", { name, avatar });
+});
 
-  socket.on("send", message => {
-    socket.broadcast.emit("receive", {
-      message: message,
-      names: users[socket.id]
+
+socket.on("send", message => {
+  const user = users[socket.id];
+
+  if (!user) {
+    console.warn("Message received from unidentified user:", socket.id);
+    return;
+  }
+
+  socket.broadcast.emit("receive", {
+    avatar: user.avatar,
+    name: user.name,
+    message: message
+  });
+});
+
+
+socket.on('typing',userName => {
+  socket.broadcast.emit('show-typing', userName);
+});
+
+socket.on("disconnect", () => {
+  const user = users[socket.id];
+  if (user) {
+    socket.broadcast.emit("left", {
+      name: user.name,
+      avatar: user.avatar
     });
-  });
-
-  socket.on("disconnect", () => {
-    socket.broadcast.emit("left", users[socket.id]);
     delete users[socket.id];
-  });
+  }
+});
 });
 
 const PORT = process.env.PORT || 8000;
