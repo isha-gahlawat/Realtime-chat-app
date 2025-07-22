@@ -34,7 +34,7 @@ This is a responsive, real-time chat application built with **Socket.IO**, **HTM
   - `README.md`
   - **public/**
     - `index.html`
-    - `ss.png` – 📸 Screenshot of folder structure ✅
+    - `ss.png` 
     - **css/**
       - `style.css`
     - **js/**
@@ -46,8 +46,8 @@ This is a responsive, real-time chat application built with **Socket.IO**, **HTM
       - `image6.jpeg`
       - `image7.jpeg`
     - `ting.mp3`
-    - **emoji-picker/**
-      - `emoji-picker.min.js`
+    - `download.jpeg`
+      
      
 ---
 
