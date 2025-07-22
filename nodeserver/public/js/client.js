@@ -4,7 +4,7 @@ const socket=io();
 const form=document.getElementById('send-container');
 const messageInput=document.getElementById('messageInp');
 const messagecontainer=document.querySelector(".container");
-var audio =new Audio('ting.mp3');
+var audio =new Audio('/ting.mp3');
 
 //function which will apend event info
 const append=(message,position)=>{
